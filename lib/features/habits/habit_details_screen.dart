@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habits/provider/habit_provider.dart';
+import 'package:provider/provider.dart';
 
 class HabitDetailsScreen extends StatefulWidget {
   const HabitDetailsScreen({super.key, this.title});
@@ -16,7 +18,23 @@ class _HabitDetailScreenState extends State<HabitDetailsScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(widget.title ?? "")],
+          children: [
+            Text(widget.title ?? ""),
+            Expanded(
+              child: Consumer<HabitProvider>(
+                builder: (context, habitProvider, child) {
+                  return ListView.builder(
+                    itemCount: habitProvider.habits.length,
+                    itemBuilder: (context, index) {
+                      final habit = habitProvider.habits[index];
+
+                      return ListTile(title: Text(habit.name));
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

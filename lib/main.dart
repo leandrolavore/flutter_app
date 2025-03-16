@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habits/provider/habit_provider.dart';
+import 'package:provider/provider.dart';
 import 'app_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => HabitProvider())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -41,10 +48,10 @@ class MainLayout extends StatelessWidget {
                   context.go('/');
                   break;
                 case 1:
-                  context.go('/add-habit');
+                  context.go('/habits/add-habit');
                   break;
                 case 2:
-                  context.go('/habit-details');
+                  context.go('/habits/habit-details');
                   break;
                 case 3:
                   context.go('/settings');
@@ -78,10 +85,12 @@ class MainLayout extends StatelessWidget {
 
   int _getSelectedIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
+
     if (location == '/') return 0;
-    if (location == '/add-habit') return 1;
-    if (location == '/habit-details') return 2;
-    if (location == '/settings') return 3;
+    if (location.startsWith('/habits/add-habit')) return 1;
+    if (location.startsWith('/habits/habit-details')) return 2;
+    if (location.startsWith('/settings')) return 3;
+
     return 0;
   }
 }

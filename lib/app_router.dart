@@ -17,13 +17,21 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const HomeScreen(title: "Home"),
         ),
         GoRoute(
-          path: '/add-habit',
-          builder: (context, state) => const AddHabitScreen(title: "Habits"),
-        ),
-        GoRoute(
-          path: '/habit-details',
-          builder:
-              (context, state) => const HabitDetailsScreen(title: "Details"),
+          path: '/habits',
+          builder: (context, state) => const AddHabitScreen(title: "Add Habit"),
+          routes: [
+            GoRoute(
+              path: 'add-habit',
+              builder:
+                  (context, state) => const AddHabitScreen(title: "Add Habit"),
+            ),
+            GoRoute(
+              path: 'habit-details',
+              builder:
+                  (context, state) =>
+                      const HabitDetailsScreen(title: "Details"),
+            ),
+          ],
         ),
       ],
     ),
