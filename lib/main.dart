@@ -48,7 +48,7 @@ class MainLayout extends StatelessWidget {
                   context.go('/');
                   break;
                 case 1:
-                  context.go('/habits/add-habit');
+                  context.go('/habits/manage-habits');
                   break;
                 case 2:
                   context.go('/habits/habit-details');
@@ -65,7 +65,7 @@ class MainLayout extends StatelessWidget {
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.add),
-                label: Text('Add Habit'),
+                label: Text('Manage Habits'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.add),
@@ -87,7 +87,7 @@ class MainLayout extends StatelessWidget {
     final location = GoRouterState.of(context).uri.toString();
 
     if (location == '/') return 0;
-    if (location.startsWith('/habits/add-habit')) return 1;
+    if (location.startsWith('/habits/manage-habits')) return 1;
     if (location.startsWith('/habits/habit-details')) return 2;
     if (location.startsWith('/settings')) return 3;
 

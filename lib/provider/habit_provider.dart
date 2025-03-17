@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:habits/provider/habit.dart';
 
 class HabitProvider extends ChangeNotifier {
-  final List<Habit> _habits = [
-    Habit(name: 'Drink Water'),
-    Habit(name: 'Exercise'),
-  ];
+  final List<Habit> _habits = [];
 
   List<Habit> get habits => _habits;
 
   void addHabit(String habitName) {
     _habits.add(Habit(name: habitName));
-    print("🆕 Added habit: $habitName");
     notifyListeners();
   }
 
@@ -20,7 +16,6 @@ class HabitProvider extends ChangeNotifier {
 
     if (index != -1) {
       _habits.removeAt(index);
-      print("❌ Removed habit: $habitName");
       notifyListeners();
     }
   }

@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:habits/features/habits/add_habit_screen.dart';
+import 'package:habits/features/habits/manage_habit_screen.dart';
 import 'package:habits/features/habits/habit_details_screen.dart';
 import 'package:habits/features/home/home_screen.dart';
 import 'package:habits/features/settings/settings_screen.dart';
@@ -18,12 +18,15 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: '/habits',
-          builder: (context, state) => const AddHabitScreen(title: "Add Habit"),
+          builder:
+              (context, state) =>
+                  const ManageHabitScreen(title: "Manage Habits"),
           routes: [
             GoRoute(
-              path: 'add-habit',
+              path: 'manage-habits',
               builder:
-                  (context, state) => const AddHabitScreen(title: "Add Habit"),
+                  (context, state) =>
+                      const ManageHabitScreen(title: "Manage Habits"),
             ),
             GoRoute(
               path: 'habit-details',
