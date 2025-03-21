@@ -23,7 +23,14 @@ class _HabitDetailScreenState extends State<HabitDetailsScreen> {
             Expanded(
               child: Consumer<HabitProvider>(
                 builder: (context, habitProvider, child) {
-                  return ListView.builder(
+                  return GridView.builder(
+                    padding: const EdgeInsets.all(8.0),
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200, // Maximum width per tile
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1.0, // Adjust according to your design
+                    ),
                     itemCount: habitProvider.habits.length,
                     itemBuilder: (context, index) {
                       final habit = habitProvider.habits[index];

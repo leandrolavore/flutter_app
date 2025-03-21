@@ -56,7 +56,6 @@ class _AddHabitScreenState extends State<ManageHabitScreen> {
                             if (value == null || value.isEmpty) {
                               return "Habit can't be empty";
                             }
-
                             return null;
                           },
                         ),
@@ -67,35 +66,55 @@ class _AddHabitScreenState extends State<ManageHabitScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16),
-                  Consumer<HabitProvider>(
-                    builder: (context, habitProvider, child) {
-                      return SingleChildScrollView(
-                        child: Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          alignment: WrapAlignment.start,
-                          children:
-                              habitProvider.habits.map((habit) {
-                                return Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.3,
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue[100],
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      habit.name,
-                                      textAlign: TextAlign.center,
+                  const SizedBox(height: 16),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * 0.5,
+                    ),
+                    child: Consumer<HabitProvider>(
+                      builder: (context, habitProvider, child) {
+                        return SingleChildScrollView(
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            alignment: WrapAlignment.start,
+                            children:
+                                habitProvider.habits.map((habit) {
+                                  return Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Colors.blue[100],
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                  ),
-                                );
-                              }).toList(),
-                        ),
-                      );
-                    },
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Center(
+                                            child: Text(
+                                              habit.name,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                        IconButton(
+                                          iconSize: 16,
+                                          icon: const Icon(Icons.cancel),
+                                          onPressed: () {
+                                            habitProvider.removeHabit(
+                                              habit.name,
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

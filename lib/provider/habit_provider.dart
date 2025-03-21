@@ -2,7 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:habits/provider/habit.dart';
 
 class HabitProvider extends ChangeNotifier {
-  final List<Habit> _habits = [];
+  final List<Habit> _habits = [
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+    Habit(name: 'asdf'),
+  ];
 
   List<Habit> get habits => _habits;
 
